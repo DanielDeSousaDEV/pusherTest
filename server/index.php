@@ -1,6 +1,5 @@
 <?php
-
-use Pusher\Pusher;
+    use Pusher\Pusher;
 
     require __DIR__ . '/vendor/autoload.php';
     require 'dotEnvConfig.php';
@@ -23,6 +22,4 @@ use Pusher\Pusher;
     ];
 
     $pusher->trigger('test-channel', 'test-event', $data)
-
-    
 ?>
