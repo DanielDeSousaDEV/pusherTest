@@ -11,6 +11,9 @@ class Router
     string $path, // URL/rota.
     callable $callback // Função executada nessa rota.
   ) {
+    //tratamento para melhor desenvolvimento
+    $method = strtoupper($method);
+
     $this->routes[$method][$path] = $callback;
   }
 

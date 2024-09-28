@@ -14,9 +14,9 @@ class Application
       return;
     });
 
-    $router->create("GET", "/hello", function () {
+    $router->create("POST", "/hello", function () {
       http_response_code(200);
-      echo json_encode(["hello" => $_GET['value'] ?? 'não definido']);
+      echo json_encode(["hello" => $_POST['value'] ?? 'não definido']);
       return;
     });
 
