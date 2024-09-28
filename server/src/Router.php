@@ -27,8 +27,12 @@ class Router
       // Percore as rotas com o método atual:
       foreach ($this->routes[$httpMethod] as $path => $callback) {
 
+        //limpa a url desconsiderando qualquer query param
+        $urlWithQueryParams = $_SERVER["REQUEST_URI"];
+        $cleanUrl = strtok($urlWithQueryParams, '?');
+
         // Se a rota atual existir, retorna a função...
-        if ($path === $_SERVER["REQUEST_URI"]) {
+        if ($path === $cleanUrl) {
           return $callback();
         }
       }

@@ -10,12 +10,13 @@ class Application
 
     $router->create("GET", "/", function () {
       http_response_code(200);
+      echo json_encode(["daniel" => 'de sousa']);
       return;
     });
 
     $router->create("GET", "/hello", function () {
       http_response_code(200);
-      echo json_encode(["hello" => "world"]);
+      echo json_encode(["hello" => $_GET['value'] ?? 'não definido']);
       return;
     });
 
