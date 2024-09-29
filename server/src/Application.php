@@ -117,8 +117,8 @@ class Application
         $query = 'INSERT INTO products (id, name, price, id_user) VALUES (null, :productName, :productPrice, :userId)';
         $stmt = $this->Connection->prepare($query);
         $stmt->bindParam(':productName', $productName, PDO::PARAM_STR);
-        $stmt->bindParam(':productPrice', $productPrice, PDO::PARAM_STR);
-        $stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $stmt->bindParam(':productPrice', $productPrice, PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
   
         $stmt->execute();
   
@@ -157,7 +157,44 @@ class Application
       return;
     });
 
+    $router->create('POST', '/sales', function () {
 
+      $productId = $_POST['id_product'] ?? null;
+      $userId = $_POST['id_user'] ?? null;
+
+      $productId = trim($productId);
+      $userId = trim($userId);
+
+      if (!$productId || !$userId) {
+        echo json_encode([
+          'erro' => 'invalid data'
+        ]);
+
+        return;
+      };
+      
+      try {
+        $query = 'INSERT INTO sales (id, id_user, id_product, date_of_sale) VALUES (null, :productId, :userId, null)';
+        $stmt = $this->Connection->prepare($query);
+        $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+  
+        $stmt->execute();
+  
+        http_response_code(201);
+        echo json_encode([
+          'response' => 'Produto criado com sucessso'
+        ]);
+      }catch (Exception $e) {
+        echo json_encode([
+          'response' => 'Ocorreu algum erro',
+          'erro' => $e->getMessage()
+        ]);
+      }
+
+      return;
+
+    });
     
     $router->init();
   }
