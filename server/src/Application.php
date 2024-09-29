@@ -2,15 +2,28 @@
 
 namespace SimpleApi;
 
+use PDO;
+
 class Application
 {
+
+  public function __construct(
+    public PDO $Connection
+  ) {}
+
   public function start()
   {
     $router = new Router();
 
     $router->create("GET", "/", function () {
-      http_response_code(200);
-      echo json_encode(["daniel" => 'de sousa']);
+      $query = 'SELECT * FROM users';
+      $stmt = $this->Connection->prepare($query);
+      $stmt->execute();
+
+      while($data = $stmt->fetch()){
+        var_dump($data);
+      };
+      
       return;
     });
 
