@@ -95,6 +95,48 @@ class Application
       return;
     });
 
+    $router->create('POST', '/products', function () {
+
+      $productName = $_POST['name'] ?? null;
+      $productPrice = $_POST['price'] ?? null;
+      $userId = $_POST['id_user'] ?? null;
+
+      $productName = trim($productName);
+      $productPrice = trim($productPrice);
+      $userId = trim($userId);
+
+      if (!$productName || !$productPrice || !$userId) {
+        echo json_encode([
+          'erro' => 'invalid data'
+        ]);
+
+        return;
+      };
+      
+      try {
+        $query = 'INSERT INTO products (id, name, price, id_user) VALUES (null, :productName, :productPrice, :userId)';
+        $stmt = $this->Connection->prepare($query);
+        $stmt->bindParam(':productName', $productName, PDO::PARAM_STR);
+        $stmt->bindParam(':productPrice', $productPrice, PDO::PARAM_STR);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
+  
+        $stmt->execute();
+  
+        http_response_code(201);
+        echo json_encode([
+          'response' => 'Produto criado com sucessso'
+        ]);
+      }catch (Exception $e) {
+        echo json_encode([
+          'response' => 'Ocorreu algum erro',
+          'erro' => $e->getMessage()
+        ]);
+      }
+
+      return;
+
+    });
+
     //SALES
 
     $router->create("POST", "/hello", function () {
