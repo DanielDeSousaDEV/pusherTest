@@ -138,13 +138,27 @@ class Application
     });
 
     //SALES
+    $router->create("GET", "/sales", function () {
+      $query = 'SELECT * FROM sales';
 
-    $router->create("POST", "/hello", function () {
-      http_response_code(200);
-      echo json_encode(["hello" => $_POST['value'] ?? 'não definido']);
+      if (isset($_GET['id'])) {
+        $query .= ' WHERE id = ' . $_GET['id'];
+      }
+
+      $stmt = $this->Connection->prepare($query);
+      $stmt->execute();
+
+      $data = [];
+      while($dataFecth = $stmt->fetch()){
+        $data[] = $dataFecth;
+      };
+      echo json_encode($data,JSON_PRETTY_PRINT);
+      
       return;
     });
 
+
+    
     $router->init();
   }
 }
