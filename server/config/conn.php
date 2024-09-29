@@ -1,6 +1,6 @@
 <?php 
     try {
-        $fullDNS = $_ENV['DB_DNS'] . ';dbname=' . $_ENV['DB_NAME'];
+        $fullDNS = $_ENV['DB_DRIVER'] . ':' . $_ENV['DB_URL'] . ';dbname=' . $_ENV['DB_NAME'];
 
         $conn = new PDO(
             $fullDNS,
