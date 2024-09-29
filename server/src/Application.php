@@ -16,6 +16,7 @@ class Application
   {
     $router = new Router();
 
+    //USERS
     $router->create("GET", "/users", function () {
       $query = 'SELECT * FROM users';
 
@@ -26,9 +27,11 @@ class Application
       $stmt = $this->Connection->prepare($query);
       $stmt->execute();
 
-      while($data = $stmt->fetch()){
-        var_dump($data);
+      $data = [];
+      while($dataFecth = $stmt->fetch()){
+        $data[] = $dataFecth;
       };
+      echo json_encode($data,JSON_PRETTY_PRINT);
       
       return;
     });
@@ -71,6 +74,28 @@ class Application
       return;
 
     });
+
+    //PRODUCTS
+    $router->create("GET", "/products", function () {
+      $query = 'SELECT * FROM products';
+
+      if (isset($_GET['id'])) {
+        $query .= ' WHERE id = ' . $_GET['id'];
+      }
+
+      $stmt = $this->Connection->prepare($query);
+      $stmt->execute();
+
+      $data = [];
+      while($dataFecth = $stmt->fetch()){
+        $data[] = $dataFecth;
+      };
+      echo json_encode($data,JSON_PRETTY_PRINT);
+      
+      return;
+    });
+
+    //SALES
 
     $router->create("POST", "/hello", function () {
       http_response_code(200);
