@@ -1,8 +1,8 @@
 <?php
     use Pusher\Pusher;
 
-    require __DIR__ . '/vendor/autoload.php';
-    require 'dotEnvConfig.php';
+    require './vendor/autoload.php';
+    require './config/dotEnvConfig.php';
 
     $options = [
         'cluster' => $_ENV['PUSHER_CLUSTER'],    

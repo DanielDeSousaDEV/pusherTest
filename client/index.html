@@ -1,12 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste do Pusher</title>
+    <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Teste do Pusher</h1>
+    <div class="container is-relative">
+        <nav class="navbar">
+            <div class="container">
+              <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="./pages/dashboard.html" target="_blank">DashBoard</a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                          Usuarios
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="#">Cadastrar Usuario</a>
+                            <a class="navbar-item" href="#">Lista de Usuario</a>
+                        </div>
+                    </div>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                          Produtos
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="#">Cadastrar Produto</a>
+                            <a class="navbar-item" href="#">Lista de Produto</a>
+                        </div>
+                    </div>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                          Vendas
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="#">Cadastrar Venda</a>
+                            <a class="navbar-item" href="#">Lista de Venda</a>
+                        </div>
+                    </div>
+                    
+                </div>
+          
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+                      <a class="button is-dark" href="https://github.com/DanielDeSousaDEV" target="_blank">Github</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+        
+        <h1 class="title">Cadastrar Usuario</h1>
+        
+        <form>
+            <div class="field">
+                <label class="label" for="nome">Nome:</label>
+                <div class="control has-icons-left">
+                    <input id="nome" class="input" type="text" placeholder="Digite seu nome">
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="email">Email:</label>
+                <div class="control has-icons-left">
+                    <input id="email" class="input" type="email" placeholder="Digite seu email">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="is-flex is-flex-direction-row is-justify-content-flex-end my-5">
+                <button class="button is-primary ">
+                    Cadastrar Usuario
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="scripts/main.js" type="module"></script>
 </html>
