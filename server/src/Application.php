@@ -2,6 +2,7 @@
 
 namespace SimpleApi;
 
+use Exception;
 use PDO;
 
 class Application
@@ -15,8 +16,13 @@ class Application
   {
     $router = new Router();
 
-    $router->create("GET", "/", function () {
+    $router->create("GET", "/users", function () {
       $query = 'SELECT * FROM users';
+
+      if (isset($_GET['id'])) {
+        $query .= ' WHERE id = ' . $_GET['id'];
+      }
+
       $stmt = $this->Connection->prepare($query);
       $stmt->execute();
 
@@ -25,6 +31,45 @@ class Application
       };
       
       return;
+    });
+
+    $router->create('POST', '/users', function () {
+
+      $userName = $_POST['name'] ?? null;
+      $userEmail = $_POST['email'] ?? null;
+
+      $userName = trim($userName);
+      $userEmail = trim($userEmail);
+
+      if (!$userName || !$userEmail) {
+        echo json_encode([
+          'erro' => 'invalid data'
+        ]);
+
+        return;
+      };
+      
+      try {
+        $query = 'INSERT INTO users (id, name, email) VALUES (null, :userName, :userEmail)';
+        $stmt = $this->Connection->prepare($query);
+        $stmt->bindParam(':userName', $userName, PDO::PARAM_STR);
+        $stmt->bindParam(':userEmail', $userEmail, PDO::PARAM_STR);
+  
+        $stmt->execute();
+  
+        http_response_code(201);
+        echo json_encode([
+          'response' => 'usuario criado com sucessso'
+        ]);
+      }catch (Exception $e) {
+        echo json_encode([
+          'response' => 'Ocorreu algum erro',
+          'erro' => $e->getMessage()
+        ]);
+      }
+
+      return;
+
     });
 
     $router->create("POST", "/hello", function () {
