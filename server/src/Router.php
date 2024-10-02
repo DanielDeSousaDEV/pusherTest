@@ -21,6 +21,8 @@ class Router
   {
     // Colocamos o content-type da resposta para JSON.
     header('Content-Type: application/json; charset=utf-8');
+    header("Access-Control-Allow-Origin: *");
+    // header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
     $httpMethod = $_SERVER["REQUEST_METHOD"];
 

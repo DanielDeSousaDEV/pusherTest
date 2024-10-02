@@ -17,7 +17,7 @@
             <div class="container">
               <div id="navMenu" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="./pages/dashboard.html" target="_blank">DashBoard</a>
+                    <a class="navbar-item" href="../dashboard.html" target="_blank">DashBoard</a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                           Usuarios
@@ -65,7 +65,7 @@
             <div class="field">
                 <label class="label" for="nome">Nome:</label>
                 <div class="control has-icons-left">
-                    <input id="nome" class="input" type="text" placeholder="Digite seu nome">
+                    <input id="nome" name="name" class="input" type="text" placeholder="Digite seu nome">
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user"></i>
                     </span>
@@ -74,7 +74,7 @@
             <div class="field">
                 <label class="label" for="email">Email:</label>
                 <div class="control has-icons-left">
-                    <input id="email" class="input" type="email" placeholder="Digite seu email">
+                    <input id="email" name="email" class="input" type="email" placeholder="Digite seu email">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -88,5 +88,5 @@
         </form>
     </div>
 </body>
-<script src="scripts/main.js" type="module"></script>
+<script src="./scripts/addUser.js" type="module"></script>
 </html>
