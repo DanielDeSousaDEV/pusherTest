@@ -24,6 +24,15 @@ class Router
     header("Access-Control-Allow-Origin: *");
     // header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
+    /*
+    
+    talvez o ideal seja eu devolver sempre 200 numa requisição options
+    alem disso eu devo a conexão com o banco pois esta retornando erro no pdo 
+    devo tbm criar o banco de dados
+    ver quais desses cabeçalhos são essencias
+
+    */
+
     $httpMethod = $_SERVER["REQUEST_METHOD"];
 
     // O método atual existe em nossas rotas?
