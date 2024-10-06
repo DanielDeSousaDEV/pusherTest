@@ -1,0 +1,248 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "pusherTest",
+    "collectionId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+    "dateExported": "2024-10-06T11:55:03.706Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "c23d2f09-5c56-4e93-be5e-20154059befa",
+            "name": "users",
+            "containerId": "",
+            "created": "2024-09-29T13:16:14.315Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "a2cbb465-afbe-49ac-a34c-f4b0d32d8119",
+            "name": "products",
+            "containerId": "",
+            "created": "2024-09-29T13:16:23.222Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "115d9eea-85f8-4b4d-9266-3c7c1398b2f6",
+            "name": "sales",
+            "containerId": "",
+            "created": "2024-09-29T13:16:29.452Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "9358c52e-5751-40ae-b5b9-eaef83cb412e",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "c23d2f09-5c56-4e93-be5e-20154059befa",
+            "name": "all users",
+            "url": "localhost:1234/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-29T13:16:41.853Z",
+            "modified": "2024-09-29T14:48:26.003Z",
+            "headers": []
+        },
+        {
+            "_id": "2916cf2f-f20e-4451-bc42-b2e2e67a4765",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "c23d2f09-5c56-4e93-be5e-20154059befa",
+            "name": "one user",
+            "url": "localhost:1234/users?id=1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-09-29T13:17:08.981Z",
+            "modified": "2024-09-29T16:03:26.015Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "6b640f65-dd57-45d8-85e4-98ff888f99d3",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "a2cbb465-afbe-49ac-a34c-f4b0d32d8119",
+            "name": "all products",
+            "url": "localhost:1234/products",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-09-29T13:17:29.890Z",
+            "modified": "2024-09-29T15:21:15.728Z",
+            "headers": []
+        },
+        {
+            "_id": "62aafbc1-3c0f-4322-868f-75ccfe9b598a",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "115d9eea-85f8-4b4d-9266-3c7c1398b2f6",
+            "name": "all sales",
+            "url": "localhost:1234/sales",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-09-29T13:17:37.557Z",
+            "modified": "2024-09-29T15:48:34.244Z",
+            "headers": []
+        },
+        {
+            "_id": "8f17704e-bb5e-4f17-b624-763a7ccff0e8",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "115d9eea-85f8-4b4d-9266-3c7c1398b2f6",
+            "name": "one sale",
+            "url": "localhost:1234/sales?id=1",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-09-29T13:17:46.991Z",
+            "modified": "2024-09-29T15:49:03.796Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "85471646-d982-478a-8178-62c1530d5e22",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "a2cbb465-afbe-49ac-a34c-f4b0d32d8119",
+            "name": "one product",
+            "url": "localhost:1234/products?id=1",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-09-29T13:17:59.310Z",
+            "modified": "2024-09-29T15:21:10.784Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5cded43a-cf0f-4c4c-9161-9a4f5546c721",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "115d9eea-85f8-4b4d-9266-3c7c1398b2f6",
+            "name": "create a sale",
+            "url": "localhost:1234/sales",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-09-29T15:49:17.942Z",
+            "modified": "2024-09-29T16:01:09.485Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "id_product",
+                        "value": "1"
+                    },
+                    {
+                        "name": "id_user",
+                        "value": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "304f164e-db63-4bdb-9dfd-ce5a0e2e2d84",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "c23d2f09-5c56-4e93-be5e-20154059befa",
+            "name": "create a user",
+            "url": "localhost:1234/users",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-09-29T14:04:48.206Z",
+            "modified": "2024-09-29T14:47:30.389Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Gabriel"
+                    },
+                    {
+                        "name": "email",
+                        "value": "gabriel@gmail.com"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3f99aaad-f349-456c-9036-9bd41b51c95e",
+            "colId": "7cf674de-2e12-4fc2-bab6-8f5f320ca1ed",
+            "containerId": "a2cbb465-afbe-49ac-a34c-f4b0d32d8119",
+            "name": "create a product",
+            "url": "localhost:1234/products",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-09-29T15:31:44.482Z",
+            "modified": "2024-09-29T15:42:58.979Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "felicidade"
+                    },
+                    {
+                        "name": "price",
+                        "value": "2000"
+                    },
+                    {
+                        "name": "id_user",
+                        "value": "1"
+                    }
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "runOptions": {
+            "delay": 500,
+            "iterations": 1,
+            "dataFilePath": ""
+        }
+    },
+    "ref": "Om799MpjXFiZVcbj8J7-As0WcGetpx2w52VBK3eMp1PPz0bO2HnhIbXZ1y9madknUqma4I8RTZi3Ed6ZepITFQ"
+}
