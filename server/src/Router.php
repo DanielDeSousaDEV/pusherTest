@@ -22,8 +22,10 @@ class Router
     // Colocamos o content-type da resposta para JSON.
     header('Content-Type: application/json; charset=utf-8');
     header("Access-Control-Allow-Origin: *");
-    // header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    
+    $headers = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'];
+    header("Access-Control-Allow-Headers: {$headers}");
     /*
     
     talvez o ideal seja eu devolver sempre 200 numa requisição options
@@ -50,7 +52,14 @@ class Router
           return $callback();
         }
       }
-    }
+    };
+
+    if ($httpMethod === 'OPTIONS') {
+      http_response_code(200);
+      return json_encode([
+        'pfv' => 'daCerto'
+      ]);
+    };
 
     // Caso não exista a rota/método atual: 
     http_response_code(404);
