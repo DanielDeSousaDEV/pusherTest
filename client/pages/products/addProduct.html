@@ -66,9 +66,9 @@
         
         <form>
             <div class="field">
-                <label class="label" for="nome">Nome:</label>
+                <label class="label" for="name">Nome:</label>
                 <div class="control has-icons-left">
-                    <input id="nome" class="input" type="text" placeholder="Digite o nome do produto">
+                    <input id="name" class="input" type="text" placeholder="Digite o nome do produto">
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-box-archive"></i>
                     </span>
@@ -85,13 +85,11 @@
             </div>
             
             <div class="field">
-                <label class="label" for="idUser">Id do Vendedor:</label>
+                <label class="label" for="salerSelect">Id do Vendedor:</label>
                 <div class="control has-icons-left">
                     <div class="select is-fullwidth">
-                        <select>
-                            <option>aaalal</option>
-                            <option>aaalal</option>
-                            <option>aaalal</option>
+                        <select id="salerSelect" name="id_user">
+                            
                         </select>
                     </div>
                     <span class="icon is-small is-left">
@@ -100,12 +98,12 @@
                 </div>
             </div>
             <div class="is-flex is-flex-direction-row is-justify-content-flex-end my-5">
-                <button class="button is-primary ">
+                <button type="submit" class="button is-primary">
                     Cadastrar Produto
                 </button>
             </div>
         </form>
     </div>
 </body>
-<script src="./scripts/" type="module"></script>
+<script src="scripts/addProduct.js" type="module"></script>
 </html>
