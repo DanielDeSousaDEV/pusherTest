@@ -210,6 +210,42 @@ class Application
       while($dataFecth = $stmt->fetch()){
         $data[] = $dataFecth;
       };
+
+      $data = array_map(function ($sale){
+        $queryFKUser = 'SELECT * FROM users WHERE id = :userId LIMIT 1';
+
+        $stmtFkUser = $this->Connection->prepare($queryFKUser);
+        $stmtFkUser->bindParam(':userId', $sale['id_user'], PDO::PARAM_INT);
+
+        $stmtFkUser->execute();
+
+        unset($sale['id_user']);
+        
+        while($dataFKUserFecth = $stmtFkUser->fetch()){
+          $sale['user'] = $dataFKUserFecth;
+        };
+
+        return $sale;
+      }, $data);
+
+
+      $data = array_map(function ($product){
+        $queryFKUser = 'SELECT * FROM products WHERE id = :userId LIMIT 1';
+
+        $stmtFkUser = $this->Connection->prepare($queryFKUser);
+        $stmtFkUser->bindParam(':userId', $product['id_product'], PDO::PARAM_INT);
+
+        $stmtFkUser->execute();
+
+        unset($product['id_product']);
+        
+        while($dataFKUserFecth = $stmtFkUser->fetch()){
+          $product['product'] = $dataFKUserFecth;
+        };
+
+        return $product;
+      }, $data);
+
       echo json_encode($data,JSON_PRETTY_PRINT);
       
       return;
