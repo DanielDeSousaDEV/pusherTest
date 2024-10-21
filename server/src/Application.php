@@ -28,9 +28,42 @@ class Application
       $stmt->execute();
 
       $data = [];
-      while($dataFecth = $stmt->fetch()){
-        $data[] = $dataFecth;
+      while($dataUser = $stmt->fetch()){
+        $data[] = $dataUser;
       };
+
+      //cada venda
+      $data = array_map(function ($user){
+        $queryFKSales = 'SELECT * FROM sales WHERE id_user = :userId';
+
+        $stmtFkSales = $this->Connection->prepare($queryFKSales);
+        $stmtFkSales->bindParam(':userId', $user['id'], PDO::PARAM_INT);
+
+        $stmtFkSales->execute();
+
+        while($dataFKSalesFecth = $stmtFkSales->fetch()){
+          $user['sales'][] = $dataFKSalesFecth;
+        };
+        
+        return $user;
+      }, $data);
+
+      //cada produto
+      $data = array_map(function ($user){
+        $queryFKProducts = 'SELECT * FROM products WHERE id_user = :userId';
+
+        $stmtFkProducts = $this->Connection->prepare($queryFKProducts);
+        $stmtFkProducts->bindParam(':userId', $user['id'], PDO::PARAM_INT);
+
+        $stmtFkProducts->execute();
+
+        while($dataFKProductsFecth = $stmtFkProducts->fetch()){
+          $user['products'][] = $dataFKProductsFecth;
+        };
+
+        return $user;
+      }, $data);
+
       echo json_encode($data,JSON_PRETTY_PRINT);
       
       return;
