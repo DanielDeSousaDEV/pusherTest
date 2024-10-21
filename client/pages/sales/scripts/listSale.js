@@ -8,20 +8,20 @@ async function getSalesData() {
     
     updateTable(await data.data)
 }
-function updateTable(data) {
+async function updateTable(data) {
     data.forEach(sale => {
         let tableRow = document.createElement('tr')
         let tableIdCell = document.createElement('td')
         tableIdCell.innerText = sale.id
         
         let tableUser = document.createElement('td')
-        tableUser.innerText = sale.id_user
+        tableUser.innerText = sale.user.name
 
         let tableProduct = document.createElement('td')
-        tableProduct.innerText = sale.id_product
-
+        tableProduct.innerText = sale.product.name
+        
         let tableDataDaVenda = document.createElement('td')
-        tableDataDaVenda.innerText = sale.date_of_sale
+        tableDataDaVenda.innerText = new Date(sale.date_of_sale).toLocaleString('pt-br')
 
         tableRow.append(tableIdCell, tableUser, tableProduct, tableDataDaVenda)
 
