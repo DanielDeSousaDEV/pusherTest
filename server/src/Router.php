@@ -23,17 +23,7 @@ class Router
     header('Content-Type: application/json; charset=utf-8');
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    
-    $headers = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'];
-    header("Access-Control-Allow-Headers: {$headers}");
-    /*
-    
-    talvez o ideal seja eu devolver sempre 200 numa requisição options
-    alem disso eu devo a conexão com o banco pois esta retornando erro no pdo 
-    devo tbm criar o banco de dados
-    ver quais desses cabeçalhos são essencias
-
-    */
+    header("Access-Control-Allow-Headers: *");
 
     $httpMethod = $_SERVER["REQUEST_METHOD"];
 
@@ -54,6 +44,7 @@ class Router
       }
     };
 
+    //se for uma requisição OPTIONS sempre retornaram um 200 
     if ($httpMethod === 'OPTIONS') {
       http_response_code(200);
       return json_encode([

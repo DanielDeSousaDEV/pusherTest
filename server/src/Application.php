@@ -44,6 +44,8 @@ class Application
       $userName = trim($userName);
       $userEmail = trim($userEmail);
 
+      $dados = file_get_contents("php://input");
+      
       if (!$userName || !$userEmail) {
         echo json_encode([
           'erro' => 'invalid data'
@@ -53,7 +55,7 @@ class Application
       };
       
       try {
-        $query = 'INSERT INTO users (id, name, email) VALUES (null, :userName, :userEmail)';
+        $query = 'INSERT INTO users (name, email) VALUES (:userName, :userEmail)';
         $stmt = $this->Connection->prepare($query);
         $stmt->bindParam(':userName', $userName, PDO::PARAM_STR);
         $stmt->bindParam(':userEmail', $userEmail, PDO::PARAM_STR);
@@ -67,7 +69,11 @@ class Application
       }catch (Exception $e) {
         echo json_encode([
           'response' => 'Ocorreu algum erro',
-          'erro' => $e->getMessage()
+          'erro' => $e->getMessage(),
+          'post' => $_POST,
+          'get' => $_GET,
+          'php://input' => $dados,
+          'stmt' => $stmt,
         ]);
       }
 
