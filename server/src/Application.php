@@ -129,6 +129,25 @@ class Application
       while($dataFecth = $stmt->fetch()){
         $data[] = $dataFecth;
       };
+
+      //dono do produto
+      $data = array_map(function ($product){
+        $queryFKUser = 'SELECT * FROM users WHERE id = :userId LIMIT 1';
+
+        $stmtFkUser = $this->Connection->prepare($queryFKUser);
+        $stmtFkUser->bindParam(':userId', $product['id_user'], PDO::PARAM_INT);
+
+        $stmtFkUser->execute();
+
+        unset($product['id_user']);
+        
+        while($dataFKUserFecth = $stmtFkUser->fetch()){
+          $product['user'] = $dataFKUserFecth;
+        };
+
+        return $product;
+      }, $data);
+
       echo json_encode($data,JSON_PRETTY_PRINT);
       
       return;
