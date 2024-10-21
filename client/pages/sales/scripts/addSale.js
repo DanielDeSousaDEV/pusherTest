@@ -27,8 +27,8 @@ function handleSubmitForm(event) {
 
 
 
-function getUsersData() {
-    api.get('/users').then((response)=>{
+function getProductsData() {
+    api.get('/products').then((response)=>{
         updateProductsSelect(response.data)
     })
 }
@@ -39,6 +39,25 @@ function updateProductsSelect(Products) {
         productOption.innerText = product.name
         productOption.value = product.id
         productSelect.appendChild(productOption)
+    })
+}
+
+getProductsData()
+
+function getUsersData() {
+    api.get('/users').then((response)=>{
+        updateUsersSelect(response.data)
+    })
+}
+
+function updateUsersSelect(Users) {
+    console.log(Users);
+    
+    Users.map((user)=>{
+        let userOption = document.createElement('option')
+        userOption.innerText = user.name
+        userOption.value = user.id
+        salerSelect.appendChild(userOption)
     })
 }
 
