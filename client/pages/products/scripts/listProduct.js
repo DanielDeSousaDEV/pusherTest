@@ -1,32 +1,31 @@
 import api from "../../../config/apiConfig.js";
 
-const table = document.getElementById('salesTable')
+const table = document.getElementById('productsTable')
 
-async function getSalesData() {
-    let data = await api.get('/sales')
-    console.log(data);
-    
-    updateTable(await data.data)
+function getProductsData() {
+    api.get('/products').then((response)=>{
+        updateTable(response.data)
+    })
 }
 async function updateTable(data) {
-    data.forEach(sale => {
+    data.forEach(product => {
         let tableRow = document.createElement('tr')
         let tableIdCell = document.createElement('td')
-        tableIdCell.innerText = sale.id
+        tableIdCell.innerText = product.id
         
         let tableUser = document.createElement('td')
-        tableUser.innerText = sale.user.name
+        tableUser.innerText = product.name
 
         let tableProduct = document.createElement('td')
-        tableProduct.innerText = sale.product.name
+        tableProduct.innerText = product.price
         
-        let tableDataDaVenda = document.createElement('td')
-        tableDataDaVenda.innerText = new Date(sale.date_of_sale).toLocaleString('pt-br')
+        let tableSalerName = document.createElement('td')
+        tableSalerName.innerText = product.user.name
 
-        tableRow.append(tableIdCell, tableUser, tableProduct, tableDataDaVenda)
+        tableRow.append(tableIdCell, tableUser, tableProduct, tableSalerName)
 
         table.append(tableRow)
     });
 }
 
-getSalesData()
+getProductsData()
