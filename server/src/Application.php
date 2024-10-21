@@ -228,19 +228,18 @@ class Application
         return $sale;
       }, $data);
 
-
       $data = array_map(function ($product){
-        $queryFKUser = 'SELECT * FROM products WHERE id = :userId LIMIT 1';
+        $queryFKProduct = 'SELECT * FROM products WHERE id = :productId LIMIT 1';
 
-        $stmtFkUser = $this->Connection->prepare($queryFKUser);
-        $stmtFkUser->bindParam(':userId', $product['id_product'], PDO::PARAM_INT);
+        $stmtFkProduct = $this->Connection->prepare($queryFKProduct);
+        $stmtFkProduct->bindParam(':productId', $product['id_product'], PDO::PARAM_INT);
 
-        $stmtFkUser->execute();
+        $stmtFkProduct->execute();
 
         unset($product['id_product']);
         
-        while($dataFKUserFecth = $stmtFkUser->fetch()){
-          $product['product'] = $dataFKUserFecth;
+        while($dataFKProductFecth = $stmtFkProduct->fetch()){
+          $product['product'] = $dataFKProductFecth;
         };
 
         return $product;
