@@ -165,14 +165,14 @@ class Application
 
       if (!$productName || !$productPrice || !$userId) {
         echo json_encode([
-          'erro' => 'invalid data'
+          'erro' => $_POST
         ]);
 
         return;
       };
       
       try {
-        $query = 'INSERT INTO products (id, name, price, id_user) VALUES (null, :productName, :productPrice, :userId)';
+        $query = 'INSERT INTO products (name, price, id_user) VALUES (:productName, :productPrice, :userId)';
         $stmt = $this->Connection->prepare($query);
         $stmt->bindParam(':productName', $productName, PDO::PARAM_STR);
         $stmt->bindParam(':productPrice', $productPrice, PDO::PARAM_INT);

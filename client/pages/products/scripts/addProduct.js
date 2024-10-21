@@ -17,7 +17,7 @@ function handleSubmitForm(event) {
         console.log('value:', value);
     })
     
-    api.post('/sales', addUserForm).then((data)=>{
+    api.post('/products', addUserForm).then((data)=>{
         console.log('deu certo', data);
     }).catch((erro)=>{
         console.log('deu tudo errado', erro);
