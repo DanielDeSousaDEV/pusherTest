@@ -1,6 +1,8 @@
 import api from '../../../config/apiConfig.js';
 
 let form = document.querySelector('form')
+let salerSelect = document.getElementById('salerSelect')
+let productSelect = document.getElementById('productSelect')
 
 form.addEventListener('submit', handleSubmitForm)
 
@@ -22,3 +24,24 @@ function handleSubmitForm(event) {
         console.log('deu tudo errado', erro);
     })
 }
+
+
+
+function getUsersData() {
+    api.get('/users').then((response)=>{
+        updateProductsSelect(response.data)
+    })
+}
+
+function updateProductsSelect(Products) {
+    Products.map((product)=>{
+        let productOption = document.createElement('option')
+        productOption.innerText = product.name
+        productOption.value = product.id
+        productSelect.appendChild(productOption)
+    })
+}
+
+getUsersData()
+
+//disabilitar o botão antes de carregar
