@@ -251,7 +251,6 @@ class Application
     });
 
     $router->create('POST', '/sales', function () {
-
       $productId = $_POST['id_product'] ?? null;
       $userId = $_POST['id_user'] ?? null;
 
@@ -260,14 +259,14 @@ class Application
 
       if (!$productId || !$userId) {
         echo json_encode([
-          'erro' => 'invalid data'
+          'eraro' => 'invalid data'
         ]);
 
         return;
       };
       
       try {
-        $query = 'INSERT INTO sales (id, id_user, id_product, date_of_sale) VALUES (null, :productId, :userId, null)';
+        $query = 'INSERT INTO sales (id_user, id_product) VALUES (:userId, :productId)';
         $stmt = $this->Connection->prepare($query);
         $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
@@ -281,7 +280,10 @@ class Application
       }catch (Exception $e) {
         echo json_encode([
           'response' => 'Ocorreu algum erro',
-          'erro' => $e->getMessage()
+          'erro' => $e->getMessage(),
+          'post' => $_POST,
+          'get' => $_GET,
+          'stmt' => $stmt,
         ]);
       }
 
