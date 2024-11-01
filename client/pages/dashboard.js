@@ -1,11 +1,16 @@
 import "https://cdn.jsdelivr.net/npm/apexcharts";
-let chartHtml = document.getElementById('chart')
-
-
+let chartSalesPerTime = document.getElementById('chartSalesPerTime')
 
 var options = {
     chart: {
-        type: 'line'
+        type: 'line',
+        toolbar: {
+            show: false
+        },
+        height: '45%',
+    },
+    stroke: {
+        curve: 'smooth',
     },
     series: [{
         name: 'sales',
@@ -33,9 +38,9 @@ var options = {
     theme: {
         mode: 'dark',
         palette: 'palette10'
-    }
+    },
 }
   
-var chart = new ApexCharts(chartHtml, options);
+var chartSalesPerTimeFinal = new ApexCharts(chartSalesPerTime, options);
 
-chart.render();
+chartSalesPerTimeFinal.render();
