@@ -1,7 +1,9 @@
 import "https://cdn.jsdelivr.net/npm/apexcharts";
 let chartSalesPerTime = document.getElementById('chartSalesPerTime')
+let chartSalesPerUser = document.getElementById('chartSalesPerUser')
+// let chartSalesPerTime = document.getElementById('chartSalesPerTime')
 
-var options = {
+let optionsSalesPerTimeFinal = {
     chart: {
         type: 'line',
         toolbar: {
@@ -41,6 +43,50 @@ var options = {
     },
 }
   
-var chartSalesPerTimeFinal = new ApexCharts(chartSalesPerTime, options);
+let chartSalesPerTimeFinal = new ApexCharts(chartSalesPerTime, optionsSalesPerTimeFinal);
 
 chartSalesPerTimeFinal.render();
+
+let optionsSalesPerUser = {
+    chart: {
+        type: 'donut',
+        height: '45%',
+        width: '45%'
+    },
+    plotOptions: {
+        pie: {
+            customScale: 0.8,
+            donut: {
+                labels: {
+                    show: true,
+                    name: {
+                        fontSize: '24px',
+                        fontWeight: 'bold'
+                    },
+                    value: {
+                        fontSize: '32px',
+                        fontWeight: 'bold',
+                        color: 'whitesmoke'
+                    },
+                    total: {
+                        show: true,
+                        fontSize: '24px',
+                        fontWeight: 'bold'
+                    }
+                }
+            }
+        }
+    },
+    series: [2,19,28,23],
+    labels: ['daniel','daniel','daniel','daniel'],
+    theme: {
+        mode: 'dark',
+        palette: 'palette10'
+    },
+    tooltip: {
+        theme: 'light'
+    }
+}
+let chartSalesPerUserFinal = new ApexCharts(chartSalesPerUser, optionsSalesPerUser)
+
+chartSalesPerUserFinal.render()
