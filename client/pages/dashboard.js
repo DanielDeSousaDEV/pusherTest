@@ -1,4 +1,6 @@
 import "https://cdn.jsdelivr.net/npm/apexcharts";
+import api from "../config/apiConfig.js";
+
 let chartSalesPerTime = document.getElementById('chartSalesPerTime')
 let chartSalesPerUser = document.getElementById('chartSalesPerUser')
 let chartSalesPerProduct = document.getElementById('chartSalesPerProduct')
@@ -42,6 +44,11 @@ let optionsSalesPerTimeFinal = {
         palette: 'palette10'
     },
 }
+
+/**
+ * ultimas 5 dias
+ */
+
 let chartSalesPerTimeFinal = new ApexCharts(chartSalesPerTime, optionsSalesPerTimeFinal);
 
 chartSalesPerTimeFinal.render();
@@ -137,3 +144,10 @@ let optionsSalesPerProduct = {
 let chartSalesPerProductFinal = new ApexCharts(chartSalesPerProduct, optionsSalesPerProduct)
 
 chartSalesPerProductFinal.render()
+
+function getUserData() {
+    api.get('/users').then((data)=>{
+        console.log(data);  
+    })
+}
+getUserData()
