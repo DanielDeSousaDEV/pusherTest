@@ -146,8 +146,37 @@ let chartSalesPerProductFinal = new ApexCharts(chartSalesPerProduct, optionsSale
 chartSalesPerProductFinal.render()
 
 function getUserData() {
-    api.get('/users').then((data)=>{
-        console.log(data);  
+    api.get('/users').then((response)=>{
+        updateChartSalesPerUser(response.data)
     })
 }
+
+function updateChartSalesPerUser(Data) {
+    let labels = []
+    let series = []
+
+    Data.forEach(User => {
+        labels.push(User.name)
+        if (!User.sales) {
+            series.push(0)
+            return ;
+        }
+        series.push(User.sales.length)
+    });
+    chartSalesPerUserFinal.updateSeries({
+        labels,
+        series
+    })
+}
+
 getUserData()
+
+setTimeout(()=>{
+    chartSalesPerTimeFinal.appendSeries({
+        name: 'sales',
+        data: [30,40,35,54,49]
+    })
+}, 5000)
+
+//     series: [2, 19, 28, 23],
+//     labels: ['daniel','daniel','daniel','daniel'],
