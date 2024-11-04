@@ -1,15 +1,15 @@
 import "https://cdn.jsdelivr.net/npm/apexcharts";
 let chartSalesPerTime = document.getElementById('chartSalesPerTime')
 let chartSalesPerUser = document.getElementById('chartSalesPerUser')
-// let chartSalesPerTime = document.getElementById('chartSalesPerTime')
+let chartSalesPerProduct = document.getElementById('chartSalesPerProduct')
 
 let optionsSalesPerTimeFinal = {
     chart: {
         type: 'line',
+        height: '350rem',
         toolbar: {
             show: false
         },
-        height: '45%',
     },
     stroke: {
         curve: 'smooth',
@@ -42,7 +42,6 @@ let optionsSalesPerTimeFinal = {
         palette: 'palette10'
     },
 }
-  
 let chartSalesPerTimeFinal = new ApexCharts(chartSalesPerTime, optionsSalesPerTimeFinal);
 
 chartSalesPerTimeFinal.render();
@@ -50,8 +49,11 @@ chartSalesPerTimeFinal.render();
 let optionsSalesPerUser = {
     chart: {
         type: 'donut',
-        height: '45%',
-        width: '45%'
+        height: '350rem',
+        // width: '45%',
+        toolbar: {
+            show: false
+        }, 
     },
     plotOptions: {
         pie: {
@@ -77,7 +79,7 @@ let optionsSalesPerUser = {
             }
         }
     },
-    series: [2,19,28,23],
+    series: [2, 19, 28, 23],
     labels: ['daniel','daniel','daniel','daniel'],
     theme: {
         mode: 'dark',
@@ -90,3 +92,48 @@ let optionsSalesPerUser = {
 let chartSalesPerUserFinal = new ApexCharts(chartSalesPerUser, optionsSalesPerUser)
 
 chartSalesPerUserFinal.render()
+
+let optionsSalesPerProduct = {
+    chart: {
+        type: 'bar',
+        height: '350rem',
+        // width: '45%',
+        toolbar: {
+            show: false
+        },   
+    },
+    series: [{
+        name: 'ad',
+        data: [{
+            x: 'daniel',
+            y: 12,
+            goals: [{
+                name: 'media',
+                value: 18,
+                strokeColor: 'teal'
+            }]
+        },{
+            x: 'daniel',
+            y: 12
+        },{
+            x: 'daniel',
+            y: 20
+        },{
+            x: 'daniel',
+            y: 20
+        }]
+    }],
+    plotOptions: {
+        bar: {
+            borderRadius: 8,
+            distributed: true,
+        }
+    },
+    theme: {
+        mode: 'dark',
+        palette: 'palette10'
+    }
+}
+let chartSalesPerProductFinal = new ApexCharts(chartSalesPerProduct, optionsSalesPerProduct)
+
+chartSalesPerProductFinal.render()
