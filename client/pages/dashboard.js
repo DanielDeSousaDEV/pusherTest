@@ -88,6 +88,10 @@ let optionsSalesPerUser = {
     },
     series: [2, 19, 28, 23],
     labels: ['daniel','daniel','daniel','daniel'],
+    // series: [{
+    //     name: 'daniel',
+    //     data: 12
+    // }],
     theme: {
         mode: 'dark',
         palette: 'palette10'
@@ -122,6 +126,9 @@ let optionsSalesPerProduct = {
         },{
             x: 'daniel',
             y: 12
+        },{
+            x: 'daniel',
+            y: 18
         },{
             x: 'daniel',
             y: 20
@@ -163,10 +170,10 @@ function updateChartSalesPerUser(Data) {
         }
         series.push(User.sales.length)
     });
-    chartSalesPerUserFinal.updateSeries({
-        labels,
-        series
-    })
+    // chartSalesPerUserFinal.updateSeries([{
+    //     series: 'series',
+    //     labels: 20
+    // }])//formato invalido
 }
 
 getUserData()
@@ -176,7 +183,39 @@ setTimeout(()=>{
         name: 'sales',
         data: [30,40,35,54,49]
     })
+    // chartSalesPerProductFinal.appendData([{
+    //     x: 'daniel',
+    //     y: 12
+    // }])
+    // chartSalesPerProductFinal.destroy()
 }, 5000)
 
-//     series: [2, 19, 28, 23],
-//     labels: ['daniel','daniel','daniel','daniel'],
+function getProductData() {
+    api.get('/sales').then((response)=>{
+        updateChartSalesPerProduct(response.data)
+    })
+}
+
+function updateChartSalesPerProduct(Data) {
+    let labels = []
+    let series = []
+
+    console.log(Data);
+    
+
+    Data.forEach(User => {
+        labels.push(User.name)
+        if (!User.sales) {
+            series.push(0)
+            return ;
+        }
+        series.push(User.sales.length)
+    });
+    
+    chartSalesPerProductFinal.appendSeries([{
+        x: 'daniel',
+        y: 12
+    }])//formato invalido
+}
+
+getProductData()
